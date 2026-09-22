@@ -127,7 +127,7 @@ blockquote footer span { color: var(--muted); font-size: 11px; }
 #consult-form label { display: grid; gap: 7px; font-size: 12px; font-weight: 700; }
 #consult-form input, #consult-form select { width: 100%; height: 46px; padding: 0 12px; border: 1px solid var(--line); border-radius: 0; background: var(--white); outline: none; }
 #consult-form input:focus, #consult-form select:focus { border-color: var(--green); }
-#consult-form .privacy, #consult-form .full { grid-column: 1 / -1; }
+#consult-form .address, #consult-form .privacy, #consult-form .full { grid-column: 1 / -1; }
 #consult-form .privacy { display: flex; align-items: center; font-weight: 500; }
 .privacy input { width: 17px !important; height: 17px !important; }
 .form-success { padding: 50px 20px; text-align: center; border-top: 1px solid var(--ink); border-bottom: 1px solid var(--ink); }
@@ -192,5 +192,5 @@ body.modal-open { overflow: hidden; }
   .tutor-grid article { min-height: 430px; }
   .modal-panel { padding: 36px 22px 28px; }
   #consult-form { grid-template-columns: 1fr; }
-  #consult-form .privacy, #consult-form .full { grid-column: auto; }
+  #consult-form .address, #consult-form .privacy, #consult-form .full { grid-column: auto; }
 }
