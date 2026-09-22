@@ -69,8 +69,11 @@ form.addEventListener('submit', async (event) => {
       body: new FormData(form),
       headers: { Accept: 'application/json' }
     });
+    const result = await response.json();
 
-    if (!response.ok) throw new Error('Consultation request failed');
+    if (!response.ok || String(result.success) !== 'true') {
+      throw new Error(result.message || 'Consultation request failed');
+    }
 
     form.hidden = true;
     success.hidden = false;
