@@ -54,8 +54,31 @@ document.querySelectorAll('.subject-list button').forEach((button) => {
   });
 });
 
-form.addEventListener('submit', (event) => {
+form.addEventListener('submit', async (event) => {
   event.preventDefault();
-  form.hidden = true;
-  success.hidden = false;
+  const submitButton = form.querySelector('button[type="submit"]');
+  const errorMessage = form.querySelector('.form-error');
+
+  submitButton.disabled = true;
+  submitButton.textContent = '전송 중...';
+  errorMessage.hidden = true;
+
+  try {
+    const response = await fetch(form.action, {
+      method: 'POST',
+      body: new FormData(form),
+      headers: { Accept: 'application/json' }
+    });
+
+    if (!response.ok) throw new Error('Consultation request failed');
+
+    form.hidden = true;
+    success.hidden = false;
+    form.reset();
+  } catch (error) {
+    errorMessage.hidden = false;
+  } finally {
+    submitButton.disabled = false;
+    submitButton.textContent = '상담 신청 완료';
+  }
 });

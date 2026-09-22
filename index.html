@@ -168,14 +168,19 @@
       <p class="eyebrow dark">FREE CONSULTATION</p>
       <h2 id="consult-title">무료 상담 신청</h2>
       <p>간단한 정보를 남겨주시면 확인 후 연락드리겠습니다.</p>
-      <form id="consult-form">
+      <form id="consult-form" action="https://formsubmit.co/ajax/sungyeub343@gmail.com" method="POST">
+        <input type="hidden" name="_subject" value="[에듀패스] 새로운 과외 상담 신청">
+        <input type="hidden" name="_template" value="table">
+        <input type="hidden" name="_captcha" value="false">
+        <input class="form-honey" type="text" name="_honey" tabindex="-1" autocomplete="off">
         <label>이름<input name="name" type="text" placeholder="이름을 입력해주세요" required></label>
         <label>연락처<input name="phone" type="tel" placeholder="010-0000-0000" required></label>
         <label>준비 시험<select name="exam" required><option value="">선택해주세요</option><option>9급 국가직</option><option>9급 지방직</option><option>7급 공무원</option><option>경찰·소방·군무원</option><option>기타</option></select></label>
         <label>상담 과목<select name="subject" required><option value="">선택해주세요</option><option>국어</option><option>영어</option><option>한국사</option><option>종합 상담</option></select></label>
         <label class="address">거주하고 계신 도로명주소 (동·호수까지 기입 부탁드려요.)<input name="address" type="text" autocomplete="street-address" placeholder="도로명주소와 동·호수를 입력해주세요" required></label>
-        <label class="privacy"><input type="checkbox" required><span>상담을 위한 개인정보(이름, 연락처, 주소) 수집·이용에 동의합니다.</span></label>
+        <label class="privacy"><input type="checkbox" required><span>상담 접수 및 이메일 전송을 위한 개인정보(이름, 연락처, 주소) 수집·이용에 동의합니다.</span></label>
         <button class="primary-button full" type="submit">상담 신청 완료</button>
+        <p class="form-error" role="alert" hidden>전송하지 못했습니다. 잠시 후 다시 시도하거나 전화로 문의해주세요.</p>
       </form>
       <div class="form-success" hidden><strong>상담 신청이 접수되었습니다.</strong><p>확인 후 순서대로 연락드리겠습니다.</p></div>
     </div>
