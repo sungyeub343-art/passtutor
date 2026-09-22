@@ -21,7 +21,7 @@ button { cursor: pointer; }
 .site-header { position: fixed; z-index: 20; top: 0; left: 0; right: 0; height: 82px; padding: 0 5vw; display: flex; align-items: center; color: var(--white); border-bottom: 1px solid rgba(255,255,255,.22); transition: background .25s, color .25s, height .25s; }
 .site-header.scrolled { height: 70px; color: var(--ink); background: rgba(245,243,236,.94); border-bottom-color: var(--line); backdrop-filter: blur(12px); }
 .brand { display: flex; align-items: center; gap: 11px; min-width: 230px; }
-.brand-mark { width: 38px; height: 38px; display: grid; place-items: center; background: var(--lime); color: var(--forest); font: 700 24px "Gowun Batang", serif; }
+.brand-mark { width: 38px; height: 38px; display: block; flex: 0 0 auto; }
 .brand strong, .brand small { display: block; }
 .brand strong { font-size: 19px; }
 .brand small { margin-top: 2px; font-size: 10px; font-weight: 500; opacity: .72; }
@@ -109,6 +109,8 @@ blockquote footer span { color: var(--muted); font-size: 11px; }
 
 .final-cta { display: flex; justify-content: space-between; align-items: end; padding: 100px max(5vw, calc((100vw - 1180px) / 2)); color: var(--white); background: var(--green); }
 .site-footer { display: grid; grid-template-columns: .7fr 1.5fr auto; gap: 40px; padding: 55px 5vw; color: rgba(255,255,255,.58); background: #0a0d0c; font-size: 11px; line-height: 1.7; }
+.footer-brand { display: flex; align-items: center; gap: 13px; }
+.footer-brand img { width: 42px; height: 42px; }
 .footer-brand strong, .footer-brand span { display: block; }
 .footer-brand strong { color: var(--white); font-size: 22px; }
 .footer-phone { color: var(--white); font-weight: 700; text-decoration: underline; text-underline-offset: 3px; }

@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-labelledby="title">
+  <title id="title">에듀패스 로고</title>
+  <rect width="64" height="64" fill="#d8ee42"/>
+  <path fill="#173f35" d="M13 12h23c10 0 16 5.7 16 14.5S46 41 36 41H26v11H13V12Zm13 10v9h9.3c3.2 0 5-1.6 5-4.5s-1.8-4.5-5-4.5H26Z"/>
+  <path fill="none" stroke="#d8ee42" stroke-linecap="square" stroke-linejoin="miter" stroke-width="3.5" d="m29 29 5-5 4 4 7-7m-5 0h5v5"/>
+</svg>
