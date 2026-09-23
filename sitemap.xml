@@ -2,8 +2,33 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://passtutor.kr/</loc>
-    <lastmod>2026-09-22</lastmod>
+    <lastmod>2026-09-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
+  <url><loc>https://passtutor.kr/seoul/jongno-gu/</loc><lastmod>2026-09-23</lastmod><priority>0.8</priority></url>
+  <url><loc>https://passtutor.kr/seoul/jung-gu/</loc><lastmod>2026-09-23</lastmod><priority>0.8</priority></url>
+  <url><loc>https://passtutor.kr/seoul/yongsan-gu/</loc><lastmod>2026-09-23</lastmod><priority>0.8</priority></url>
+  <url><loc>https://passtutor.kr/seoul/seongdong-gu/</loc><lastmod>2026-09-23</lastmod><priority>0.8</priority></url>
+  <url><loc>https://passtutor.kr/seoul/gwangjin-gu/</loc><lastmod>2026-09-23</lastmod><priority>0.8</priority></url>
+  <url><loc>https://passtutor.kr/seoul/dongdaemun-gu/</loc><lastmod>2026-09-23</lastmod><priority>0.8</priority></url>
+  <url><loc>https://passtutor.kr/seoul/jungnang-gu/</loc><lastmod>2026-09-23</lastmod><priority>0.8</priority></url>
+  <url><loc>https://passtutor.kr/seoul/seongbuk-gu/</loc><lastmod>2026-09-23</lastmod><priority>0.8</priority></url>
+  <url><loc>https://passtutor.kr/seoul/gangbuk-gu/</loc><lastmod>2026-09-23</lastmod><priority>0.8</priority></url>
+  <url><loc>https://passtutor.kr/seoul/dobong-gu/</loc><lastmod>2026-09-23</lastmod><priority>0.8</priority></url>
+  <url><loc>https://passtutor.kr/seoul/nowon-gu/</loc><lastmod>2026-09-23</lastmod><priority>0.8</priority></url>
+  <url><loc>https://passtutor.kr/seoul/eunpyeong-gu/</loc><lastmod>2026-09-23</lastmod><priority>0.8</priority></url>
+  <url><loc>https://passtutor.kr/seoul/seodaemun-gu/</loc><lastmod>2026-09-23</lastmod><priority>0.8</priority></url>
+  <url><loc>https://passtutor.kr/seoul/mapo-gu/</loc><lastmod>2026-09-23</lastmod><priority>0.8</priority></url>
+  <url><loc>https://passtutor.kr/seoul/yangcheon-gu/</loc><lastmod>2026-09-23</lastmod><priority>0.8</priority></url>
+  <url><loc>https://passtutor.kr/seoul/gangseo-gu/</loc><lastmod>2026-09-23</lastmod><priority>0.8</priority></url>
+  <url><loc>https://passtutor.kr/seoul/guro-gu/</loc><lastmod>2026-09-23</lastmod><priority>0.8</priority></url>
+  <url><loc>https://passtutor.kr/seoul/geumcheon-gu/</loc><lastmod>2026-09-23</lastmod><priority>0.8</priority></url>
+  <url><loc>https://passtutor.kr/seoul/yeongdeungpo-gu/</loc><lastmod>2026-09-23</lastmod><priority>0.8</priority></url>
+  <url><loc>https://passtutor.kr/seoul/dongjak-gu/</loc><lastmod>2026-09-23</lastmod><priority>0.8</priority></url>
+  <url><loc>https://passtutor.kr/seoul/gwanak-gu/</loc><lastmod>2026-09-23</lastmod><priority>0.8</priority></url>
+  <url><loc>https://passtutor.kr/seoul/seocho-gu/</loc><lastmod>2026-09-23</lastmod><priority>0.8</priority></url>
+  <url><loc>https://passtutor.kr/seoul/gangnam-gu/</loc><lastmod>2026-09-23</lastmod><priority>0.8</priority></url>
+  <url><loc>https://passtutor.kr/seoul/songpa-gu/</loc><lastmod>2026-09-23</lastmod><priority>0.8</priority></url>
+  <url><loc>https://passtutor.kr/seoul/gangdong-gu/</loc><lastmod>2026-09-23</lastmod><priority>0.8</priority></url>
 </urlset>

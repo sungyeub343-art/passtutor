@@ -1,0 +1,327 @@
+.location-page {
+  background: var(--paper);
+}
+
+.location-header {
+  color: var(--white);
+  background: rgba(4, 26, 21, .42);
+  backdrop-filter: blur(8px);
+}
+
+.location-hero {
+  position: relative;
+  min-height: 680px;
+  height: 82vh;
+  max-height: 860px;
+  overflow: hidden;
+  color: var(--white);
+}
+
+.location-hero > img,
+.location-hero-shade {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.location-hero > img {
+  object-fit: cover;
+  object-position: center 44%;
+  animation: heroZoom 1.6s ease-out both;
+}
+
+.location-hero-shade {
+  background: linear-gradient(90deg, rgba(4, 26, 21, .9) 0%, rgba(4, 26, 21, .63) 48%, rgba(4, 26, 21, .2) 78%), linear-gradient(0deg, rgba(4, 26, 21, .5), transparent 60%);
+}
+
+.location-hero-content {
+  position: relative;
+  z-index: 1;
+  width: min(1180px, 90vw);
+  margin: auto;
+  padding-top: 150px;
+}
+
+.location-breadcrumb {
+  display: flex;
+  gap: 9px;
+  margin: 0 0 48px;
+  color: rgba(255, 255, 255, .72);
+  font-size: 12px;
+}
+
+.location-breadcrumb a {
+  border-bottom: 1px solid rgba(255, 255, 255, .5);
+}
+
+.location-hero h1 {
+  max-width: 850px;
+  margin: 0;
+  font: 700 68px/1.14 "Gowun Batang", serif;
+}
+
+.location-hero-content > p:not(.eyebrow, .location-breadcrumb) {
+  margin: 26px 0 32px;
+  font-size: 20px;
+  line-height: 1.7;
+}
+
+.location-intro,
+.location-process,
+.district-directory {
+  width: min(1180px, 90vw);
+  margin: auto;
+  padding: 120px 0;
+}
+
+.location-intro .section-heading h2,
+.location-process .section-heading h2,
+.district-directory .section-heading h2,
+.location-subjects h2 {
+  margin: 0;
+  font: 700 54px/1.25 "Gowun Batang", serif;
+}
+
+.location-feature-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  border-top: 1px solid var(--ink);
+}
+
+.location-feature-grid article {
+  min-height: 250px;
+  padding: 28px 34px 20px 0;
+}
+
+.location-feature-grid article + article {
+  padding-left: 34px;
+  border-left: 1px solid var(--line);
+}
+
+.location-feature-grid article > span {
+  color: var(--green);
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.location-feature-grid h3 {
+  margin: 64px 0 15px;
+  font-size: 22px;
+}
+
+.location-feature-grid p,
+.location-subjects > div > p:last-child,
+.location-process li p {
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.75;
+}
+
+.location-feature-grid p,
+.location-subjects p,
+.location-process li p {
+  margin: 0;
+}
+
+.location-subjects {
+  display: grid;
+  grid-template-columns: .9fr 1.1fr;
+  gap: 9vw;
+  padding: 110px max(5vw, calc((100vw - 1180px) / 2));
+  color: var(--white);
+  background: var(--forest);
+}
+
+.location-subjects > div > p:last-child {
+  max-width: 430px;
+  margin-top: 30px;
+  color: rgba(255, 255, 255, .65);
+}
+
+.location-subjects ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  border-top: 1px solid rgba(255, 255, 255, .35);
+}
+
+.location-subjects li {
+  display: grid;
+  grid-template-columns: 130px 1fr;
+  align-items: center;
+  padding: 26px 8px;
+  border-bottom: 1px solid rgba(255, 255, 255, .22);
+}
+
+.location-subjects strong {
+  font-size: 22px;
+}
+
+.location-subjects li span {
+  color: rgba(255, 255, 255, .62);
+  font-size: 13px;
+}
+
+.location-process {
+  display: grid;
+  grid-template-columns: .9fr 1.1fr;
+  gap: 9vw;
+}
+
+.location-process ol {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  border-top: 1px solid var(--ink);
+}
+
+.location-process li {
+  display: grid;
+  grid-template-columns: 70px 1fr;
+  padding: 26px 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.location-process li > span {
+  color: var(--green);
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.location-process h3 {
+  margin: 0 0 8px;
+  font-size: 21px;
+}
+
+.district-directory {
+  border-top: 1px solid var(--line);
+}
+
+.district-directory .section-heading {
+  margin-bottom: 48px;
+}
+
+.district-links {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  border-top: 1px solid var(--ink);
+  border-left: 1px solid var(--line);
+}
+
+.district-links a {
+  padding: 18px 14px;
+  border-right: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  background: rgba(255, 255, 255, .4);
+  font-size: 14px;
+  font-weight: 700;
+  text-align: center;
+}
+
+.district-links a:hover,
+.district-links a:focus-visible {
+  color: var(--white);
+  background: var(--green);
+}
+
+.location-cta {
+  gap: 40px;
+}
+
+@media (max-width: 850px) {
+  .location-header nav {
+    display: none;
+  }
+
+  .location-hero {
+    min-height: 650px;
+    height: 82vh;
+  }
+
+  .location-hero-content {
+    padding-top: 135px;
+  }
+
+  .location-breadcrumb {
+    margin-bottom: 38px;
+  }
+
+  .location-hero h1 {
+    font-size: 44px;
+  }
+
+  .location-hero-content > p:not(.eyebrow, .location-breadcrumb) {
+    font-size: 17px;
+  }
+
+  .location-intro,
+  .location-process,
+  .district-directory {
+    padding: 82px 0;
+  }
+
+  .location-intro .section-heading h2,
+  .location-process .section-heading h2,
+  .district-directory .section-heading h2,
+  .location-subjects h2 {
+    font-size: 38px;
+  }
+
+  .location-feature-grid,
+  .location-subjects,
+  .location-process {
+    grid-template-columns: 1fr;
+  }
+
+  .location-feature-grid article {
+    min-height: 0;
+    padding: 24px 0 28px;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .location-feature-grid article + article {
+    padding-left: 0;
+    border-left: 0;
+  }
+
+  .location-feature-grid h3 {
+    margin: 27px 0 12px;
+  }
+
+  .location-subjects {
+    gap: 48px;
+    padding-top: 82px;
+    padding-bottom: 82px;
+  }
+
+  .location-process {
+    gap: 48px;
+  }
+
+  .district-links {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 500px) {
+  .location-hero > img {
+    object-position: 62% center;
+  }
+
+  .location-hero h1 {
+    font-size: 38px;
+  }
+
+  .location-hero-content > p:not(.eyebrow, .location-breadcrumb) br {
+    display: none;
+  }
+
+  .location-subjects li {
+    grid-template-columns: 82px 1fr;
+  }
+
+  .district-links {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
