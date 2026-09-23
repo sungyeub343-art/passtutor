@@ -58,7 +58,7 @@ nav a:hover::after { right: 0; }
 .scroll-cue { position: absolute; z-index: 2; right: 5vw; bottom: 42px; font-size: 10px; font-weight: 700; letter-spacing: 2px; writing-mode: vertical-rl; }
 .scroll-cue span { margin-top: 12px; }
 
-.intro, .tutors, .reviews { width: min(1180px, 90vw); margin: auto; padding: 130px 0; }
+.intro, .tutors, .reviews, .areas { width: min(1180px, 90vw); margin: auto; padding: 130px 0; }
 .section-heading { max-width: 650px; }
 .section-heading h2, .subjects h2, .process h2, .final-cta h2 { margin: 0; font: 700 clamp(36px, 4.3vw, 62px)/1.2 "Gowun Batang", serif; letter-spacing: 0; }
 .section-lead { max-width: 570px; margin: 35px 0 60px auto; color: var(--muted); font-size: 17px; line-height: 1.8; }
@@ -106,6 +106,14 @@ blockquote > p { min-height: 145px; margin: 25px 0; font: 700 18px/1.75 "Gowun B
 blockquote footer { display: flex; justify-content: space-between; align-items: end; padding-top: 20px; border-top: 1px solid var(--line); }
 blockquote footer strong { font-size: 13px; }
 blockquote footer span { color: var(--muted); font-size: 11px; }
+
+.areas { border-top: 1px solid var(--line); }
+.area-links { display: grid; grid-template-columns: repeat(5, 1fr); border-top: 1px solid var(--ink); border-left: 1px solid var(--line); }
+.area-links a { min-height: 112px; display: flex; flex-direction: column; justify-content: space-between; padding: 20px; border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); background: rgba(255,255,255,.4); transition: color .2s, background .2s; }
+.area-links a:hover, .area-links a:focus-visible { color: var(--white); background: var(--green); }
+.area-links span { font: 700 21px "Gowun Batang", serif; }
+.area-links small { color: var(--muted); font-size: 11px; }
+.area-links a:hover small, .area-links a:focus-visible small { color: rgba(255,255,255,.72); }
 
 .final-cta { display: flex; justify-content: space-between; align-items: end; padding: 100px max(5vw, calc((100vw - 1180px) / 2)); color: var(--white); background: var(--green); }
 .site-footer { display: grid; grid-template-columns: .7fr 1.5fr auto; gap: 40px; padding: 55px 5vw; color: rgba(255,255,255,.58); background: #0a0d0c; font-size: 11px; line-height: 1.7; }
@@ -162,7 +170,7 @@ body.modal-open { overflow: hidden; }
   .hero-stats dt { font-size: 16px; }
   .hero-stats dd { font-size: 10px; }
   .scroll-cue { display: none; }
-  .intro, .tutors, .reviews { padding: 85px 0; }
+  .intro, .tutors, .reviews, .areas { padding: 85px 0; }
   .section-heading h2, .subjects h2, .process h2, .final-cta h2 { font-size: 38px; }
   .section-lead { margin: 28px 0 45px; }
   .feature-grid, .tutor-grid, .review-grid { grid-template-columns: 1fr; }
@@ -179,6 +187,7 @@ body.modal-open { overflow: hidden; }
   .process { gap: 50px; }
   .process-title { position: static; }
   blockquote > p { min-height: auto; }
+  .area-links { grid-template-columns: repeat(3, 1fr); }
   .final-cta { align-items: flex-start; flex-direction: column; gap: 35px; padding-top: 75px; padding-bottom: 75px; }
   .site-footer { grid-template-columns: 1fr; gap: 18px; }
 }
@@ -193,6 +202,9 @@ body.modal-open { overflow: hidden; }
   .hero-actions { width: 100%; }
   .subject-list small { font-size: 11px; }
   .tutor-grid article { min-height: 430px; }
+  .area-links { grid-template-columns: repeat(2, 1fr); }
+  .area-links a { min-height: 96px; padding: 16px 14px; }
+  .area-links span { font-size: 18px; }
   .modal-panel { padding: 36px 22px 28px; }
   #consult-form { grid-template-columns: 1fr; }
   #consult-form .address, #consult-form .privacy, #consult-form .full, #consult-form .form-error { grid-column: auto; }
