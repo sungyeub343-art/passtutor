@@ -148,9 +148,10 @@
 
 .location-subjects li {
   display: grid;
-  grid-template-columns: 130px 1fr;
+  grid-template-columns: 150px 1fr;
+  gap: 16px;
   align-items: center;
-  padding: 26px 8px;
+  padding: 23px 8px;
   border-bottom: 1px solid rgba(255, 255, 255, .22);
 }
 
@@ -318,7 +319,14 @@
   }
 
   .location-subjects li {
-    grid-template-columns: 82px 1fr;
+    grid-template-columns: 105px 1fr;
+    gap: 10px;
+    padding-right: 0;
+    padding-left: 0;
+  }
+
+  .location-subjects strong {
+    font-size: 17px;
   }
 
   .district-links {
