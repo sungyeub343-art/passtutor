@@ -114,7 +114,15 @@ blockquote footer strong { font-size: 13px; }
 blockquote footer span { color: var(--muted); font-size: 11px; }
 
 .areas { border-top: 1px solid var(--line); }
-.area-links { display: grid; grid-template-columns: repeat(5, 1fr); border-top: 1px solid var(--ink); border-left: 1px solid var(--line); }
+.region-directory { border-top: 1px solid var(--ink); }
+.region-directory details { border-bottom: 1px solid var(--line); }
+.region-directory summary { display: flex; justify-content: space-between; align-items: center; padding: 24px 6px; cursor: pointer; list-style: none; }
+.region-directory summary::-webkit-details-marker { display: none; }
+.region-directory summary::after { content: "+"; margin-left: 20px; color: var(--green); font-size: 24px; font-weight: 400; }
+.region-directory details[open] summary::after { content: "−"; }
+.region-directory summary span { margin-right: auto; font: 700 24px "Gowun Batang", serif; }
+.region-directory summary small { color: var(--muted); font-size: 12px; }
+.area-links { display: grid; grid-template-columns: repeat(5, 1fr); border-top: 1px solid var(--line); border-left: 1px solid var(--line); }
 .area-links a { min-height: 112px; display: flex; flex-direction: column; justify-content: space-between; padding: 20px; border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); background: rgba(255,255,255,.4); transition: color .2s, background .2s; }
 .area-links a:hover, .area-links a:focus-visible { color: var(--white); background: var(--green); }
 .area-links span { font: 700 21px "Gowun Batang", serif; }

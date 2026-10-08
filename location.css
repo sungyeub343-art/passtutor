@@ -226,6 +226,17 @@
   background: var(--green);
 }
 
+.all-area-link {
+  display: inline-flex;
+  gap: 18px;
+  align-items: center;
+  margin-top: 32px;
+  padding-bottom: 5px;
+  border-bottom: 1px solid var(--ink);
+  font-size: 14px;
+  font-weight: 700;
+}
+
 .location-cta {
   gap: 40px;
 }
