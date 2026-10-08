@@ -131,7 +131,7 @@ function page(region, areaSlug, areaName, parent = null) {
   <meta property="og:type" content="website">
   <meta property="og:locale" content="ko_KR">
   <meta property="og:title" content="${areaName} 공무원 시험 과외 소개">
-  <meta property="og:description" content="${areaName} 수험생을 위한 실시간 비대면 공무원 1:1 과외 안내입니다.">
+  <meta property="og:description" content="${areaName} 수험생을 위한 실시간 비대면 공무원 공기업 자격증 1:1과외 안내입니다.">
   <meta property="og:url" content="https://passtutor.kr${path}">
   <link rel="icon" href="/assets/logo.svg" type="image/svg+xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -155,7 +155,7 @@ function page(region, areaSlug, areaName, parent = null) {
   <header class="site-header location-header">
     <a class="brand" href="/" aria-label="에듀패스 홈">
       <img class="brand-mark" src="/assets/logo.svg" alt="">
-      <span><strong>에듀패스</strong><small>공무원 1:1 과외</small></span>
+      <span><strong>에듀패스</strong><small>공무원 공기업 자격증 1:1과외</small></span>
     </a>
     <nav aria-label="지역 페이지 메뉴">
       <a href="#subjects">수업 과목</a>
@@ -173,7 +173,7 @@ function page(region, areaSlug, areaName, parent = null) {
         <p class="location-breadcrumb">${breadcrumb}</p>
         <p class="eyebrow">${region.shortName.toUpperCase()} · LIVE ONLINE LESSON</p>
         <h1>${areaName} 공무원 시험<br>과외 소개</h1>
-        <p>${areaName} 어디서나 이동 없이 강사와 마주 보고 배우는<br>실시간 비대면 공무원 1:1 과외입니다.</p>
+        <p>${areaName} 어디서나 이동 없이 강사와 마주 보고 배우는<br>실시간 비대면 공무원 공기업 자격증 1:1과외입니다.</p>
         <a class="primary-button" href="tel:01029283614">수업 상담하기 <span aria-hidden="true">→</span></a>
       </div>
     </section>
@@ -241,7 +241,7 @@ ${parent ? `      <a class="all-area-link" href="${pathFor(region, parent.slug)}
   </main>
 
   <footer class="site-footer location-footer">
-    <div class="footer-brand"><img src="/assets/logo.svg" alt=""><div><strong>에듀패스</strong><span>공무원 1:1 과외</span></div></div>
+    <div class="footer-brand"><img src="/assets/logo.svg" alt=""><div><strong>에듀패스</strong><span>공무원 공기업 자격증 1:1과외</span></div></div>
     <div><p>전화 상담 <a class="footer-phone" href="tel:01029283614">010-2928-3614</a> · 평일 10:00–20:00 · 토요일 10:00–16:00</p><p>모든 수업은 실시간 비대면 방식으로 진행됩니다.</p></div>
     <p>© 2026 passtutor.kr. All rights reserved.</p>
   </footer>
