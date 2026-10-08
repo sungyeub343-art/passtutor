@@ -84,15 +84,42 @@ const regions = [
   { slug: "jeju", name: "제주특별자치도", shortName: "제주", areas: [["jeju-si", "제주시"], ["seogwipo-si", "서귀포시"]] },
 ];
 
+const subAreas = {
+  "gyeonggi/suwon-si": [["jangan-gu", "장안구"], ["gwonseon-gu", "권선구"], ["paldal-gu", "팔달구"], ["yeongtong-gu", "영통구"]],
+  "gyeonggi/seongnam-si": [["sujeong-gu", "수정구"], ["jungwon-gu", "중원구"], ["bundang-gu", "분당구"]],
+  "gyeonggi/anyang-si": [["manan-gu", "만안구"], ["dongan-gu", "동안구"]],
+  "gyeonggi/bucheon-si": [["wonmi-gu", "원미구"], ["sosa-gu", "소사구"], ["ojeong-gu", "오정구"]],
+  "gyeonggi/ansan-si": [["sangnok-gu", "상록구"], ["danwon-gu", "단원구"]],
+  "gyeonggi/goyang-si": [["deogyang-gu", "덕양구"], ["ilsandong-gu", "일산동구"], ["ilsanseo-gu", "일산서구"]],
+  "gyeonggi/yongin-si": [["cheoin-gu", "처인구"], ["giheung-gu", "기흥구"], ["suji-gu", "수지구"]],
+  "gyeonggi/hwaseong-si": [["manse-gu", "만세구"], ["hyohaeng-gu", "효행구"], ["byeongjeom-gu", "병점구"], ["dongtan-gu", "동탄구"]],
+  "chungbuk/cheongju-si": [["sangdang-gu", "상당구"], ["seowon-gu", "서원구"], ["heungdeok-gu", "흥덕구"], ["cheongwon-gu", "청원구"]],
+  "chungnam/cheonan-si": [["dongnam-gu", "동남구"], ["seobuk-gu", "서북구"]],
+  "jeonbuk/jeonju-si": [["wansan-gu", "완산구"], ["deokjin-gu", "덕진구"]],
+  "gyeongbuk/pohang-si": [["nam-gu", "남구"], ["buk-gu", "북구"]],
+  "gyeongnam/changwon-si": [["uichang-gu", "의창구"], ["seongsan-gu", "성산구"], ["masanhappo-gu", "마산합포구"], ["masanhoewon-gu", "마산회원구"], ["jinhae-gu", "진해구"]],
+};
+
 const pathFor = (region, areaSlug) => areaSlug ? `/${region.slug}/${areaSlug}/` : `/${region.slug}/`;
 
-function directory(region) {
-  return region.areas.map(([slug, name]) => `          <a href="${pathFor(region, slug)}">${name}</a>`).join("\n");
+function directory(items, pathBuilder) {
+  return items.map(([slug, name]) => `          <a href="${pathBuilder(slug)}">${name}</a>`).join("\n");
 }
 
-function page(region, areaSlug, areaName) {
-  const path = pathFor(region, areaSlug);
-  const fullName = areaSlug ? `${region.name} ${areaName}` : region.name;
+function page(region, areaSlug, areaName, parent = null) {
+  const path = parent ? `${pathFor(region, parent.slug)}${areaSlug}/` : pathFor(region, areaSlug);
+  const fullName = parent ? `${region.name} ${parent.name} ${areaName}` : areaSlug ? `${region.name} ${areaName}` : region.name;
+  const ownChildren = parent ? null : subAreas[`${region.slug}/${areaSlug}`];
+  const localAreas = parent?.areas ?? ownChildren;
+  const directoryItems = localAreas ?? region.areas;
+  const directoryPath = localAreas
+    ? (slug) => `${pathFor(region, parent?.slug ?? areaSlug)}${slug}/`
+    : (slug) => pathFor(region, slug);
+  const directoryName = parent?.name ?? (ownChildren ? areaName : region.name);
+  const directoryLabel = localAreas ? `${directoryName} 세부 지역` : `${region.shortName} 지역`;
+  const breadcrumb = parent
+    ? `<a href="/">홈</a><span>/</span>${region.name}<span>/</span><a href="${pathFor(region, parent.slug)}">${parent.name}</a><span>/</span>${areaName}`
+    : `<a href="/">홈</a><span>/</span>${region.name}<span>/</span>${areaName}`;
   return `<!doctype html>
 <html lang="ko">
 <head>
@@ -133,7 +160,7 @@ function page(region, areaSlug, areaName) {
     <nav aria-label="지역 페이지 메뉴">
       <a href="#subjects">수업 과목</a>
       <a href="#process">진행 방식</a>
-      <a href="#nearby-areas">${region.shortName} 지역</a>
+      <a href="#nearby-areas">${directoryLabel}</a>
     </nav>
     <a class="header-cta" href="tel:01029283614">전화 상담</a>
   </header>
@@ -143,7 +170,7 @@ function page(region, areaSlug, areaName) {
       <img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=1800&q=85" alt="공무원 시험 학습 계획을 함께 점검하는 수험생들">
       <div class="location-hero-shade"></div>
       <div class="location-hero-content">
-        <p class="location-breadcrumb"><a href="/">홈</a><span>/</span>${region.name}<span>/</span>${areaName}</p>
+        <p class="location-breadcrumb">${breadcrumb}</p>
         <p class="eyebrow">${region.shortName.toUpperCase()} · LIVE ONLINE LESSON</p>
         <h1>${areaName} 공무원 시험<br>과외 소개</h1>
         <p>${areaName} 어디서나 이동 없이 강사와 마주 보고 배우는<br>실시간 비대면 공무원 1:1 과외입니다.</p>
@@ -197,13 +224,14 @@ function page(region, areaSlug, areaName) {
 
     <section class="district-directory" id="nearby-areas">
       <div class="section-heading">
-        <p class="eyebrow dark">${region.shortName.toUpperCase()} AREAS</p>
-        <h2>${region.name} 지역별<br>공무원 시험 과외</h2>
+        <p class="eyebrow dark">${localAreas ? "LOCAL DISTRICTS" : `${region.shortName.toUpperCase()} AREAS`}</p>
+        <h2>${directoryName}${localAreas ? " 세부" : ""} 지역별<br>공무원 시험 과외</h2>
       </div>
       <div class="district-links">
-${directory(region)}
+${directory(directoryItems, directoryPath)}
       </div>
-      <a class="all-area-link" href="/#areas">전국 지역 목록 보기 <span aria-hidden="true">→</span></a>
+${parent ? `      <a class="all-area-link" href="${pathFor(region, parent.slug)}">${parent.name} 페이지로 돌아가기 <span aria-hidden="true">→</span></a>
+` : ""}      <a class="all-area-link" href="/#areas">전국 지역 목록 보기 <span aria-hidden="true">→</span></a>
     </section>
 
     <section class="final-cta location-cta">
@@ -257,6 +285,19 @@ async function generate() {
         : join(root, region.slug, "index.html");
       await mkdir(dirname(output), { recursive: true });
       await writeFile(output, page(region, areaSlug, areaName), "utf8");
+
+      const children = subAreas[`${region.slug}/${areaSlug}`];
+      if (children) {
+        for (const [childSlug, childName] of children) {
+          const childOutput = join(root, region.slug, areaSlug, childSlug, "index.html");
+          await mkdir(dirname(childOutput), { recursive: true });
+          await writeFile(childOutput, page(region, childSlug, childName, {
+            slug: areaSlug,
+            name: areaName,
+            areas: children,
+          }), "utf8");
+        }
+      }
     }
   }
 
@@ -267,7 +308,11 @@ async function generate() {
   if (!sectionPattern.test(index)) throw new Error("Homepage area section not found");
   await writeFile(indexPath, index.replace(sectionPattern, replacement), "utf8");
 
-  const urls = regions.flatMap((region) => region.areas.map(([slug]) => pathFor(region, slug)));
+  const urls = regions.flatMap((region) => region.areas.flatMap(([slug]) => {
+    const parentPath = pathFor(region, slug);
+    const children = subAreas[`${region.slug}/${slug}`] ?? [];
+    return [parentPath, ...children.map(([childSlug]) => `${parentPath}${childSlug}/`)];
+  }));
   const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
@@ -281,7 +326,8 @@ ${urls.map((url) => `  <url><loc>https://passtutor.kr${url}</loc><lastmod>${upda
 `;
   await writeFile(join(root, "sitemap.xml"), sitemap, "utf8");
 
-  console.log(`Generated ${urls.length} location pages across ${regions.length} top-level regions.`);
+  const subAreaCount = Object.values(subAreas).reduce((total, areas) => total + areas.length, 0);
+  console.log(`Generated ${urls.length} location pages, including ${subAreaCount} general districts.`);
 }
 
 await generate();

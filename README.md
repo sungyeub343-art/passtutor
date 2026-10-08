@@ -6,10 +6,10 @@
 
 ## 지역 페이지 생성
 
-전국 지역 페이지, 메인 페이지의 지역 목록, 사이트맵은 하나의 지역 데이터에서 생성합니다.
+전국 지역 페이지, 일반구 세부 페이지, 메인 페이지의 지역 목록, 사이트맵은 하나의 지역 데이터에서 생성합니다.
 
 ```sh
 node scripts/generate-locations.mjs
 ```
 
-지역명이나 행정구역이 바뀌면 `scripts/generate-locations.mjs`의 `regions`를 수정한 뒤 위 명령을 실행합니다.
+지역명이나 행정구역이 바뀌면 `scripts/generate-locations.mjs`의 `regions` 또는 `subAreas`를 수정한 뒤 위 명령을 실행합니다.
