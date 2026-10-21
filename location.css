@@ -164,6 +164,20 @@
   font-size: 13px;
 }
 
+.location-subjects li a {
+  display: grid;
+  grid-column: 1 / -1;
+  grid-template-columns: inherit;
+  gap: inherit;
+  align-items: center;
+  transition: color .2s;
+}
+
+.location-subjects li a:hover,
+.location-subjects li a:focus-visible {
+  color: var(--lime);
+}
+
 .location-process {
   display: grid;
   grid-template-columns: .9fr 1.1fr;

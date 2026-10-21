@@ -3,7 +3,10 @@ import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 
 const root = join(dirname(fileURLToPath(import.meta.url)), "..");
-const updatedAt = "2026-10-08";
+const updatedAt = "2026-10-21";
+const site = "https://passtutor.kr";
+const ogImage = `${site}/assets/og-image.png`;
+const phone = "010-2928-3614";
 
 const regions = [
   { slug: "seoul", name: "서울특별시", shortName: "서울", areas: [
@@ -100,6 +103,208 @@ const subAreas = {
   "gyeongnam/changwon-si": [["uichang-gu", "의창구"], ["seongsan-gu", "성산구"], ["masanhappo-gu", "마산합포구"], ["masanhoewon-gu", "마산회원구"], ["jinhae-gu", "진해구"]],
 };
 
+// 과목·시험별 랜딩 페이지. 검색 키워드(name)와 실제 수강생 질문(faq)을 기준으로 작성합니다.
+const subjects = [
+  {
+    slug: "civil-service", name: "공무원 과외", label: "9급·7급 공무원",
+    title: "공무원 과외 | 9급·7급 1:1 화상과외 무료상담",
+    description: "9급·7급 국가직·지방직 공무원 과외. 국어·영어·한국사를 실시간 1:1 화상수업으로 준비하고 매주 학습 관리까지 받으세요. 첫 상담 무료.",
+    hero: "9급·7급 국가직, 지방직 공채를 준비하는 수험생을 위한<br>실시간 1:1 공무원 화상과외입니다.",
+    lead: "공통과목인 국어·영어·한국사부터 직렬별 학습 계획까지, 현재 점수와 시험일까지 남은 기간을 기준으로 수업을 설계합니다. 인터넷강의를 혼자 듣다 막히는 지점을 실시간 질문과 피드백으로 해결합니다.",
+    points: [
+      ["노베이스 시작", "공부를 처음 시작하는 수험생도 과목별 기초 개념부터 순서대로 잡고 기출 풀이로 넘어갑니다."],
+      ["직장인·병행 수험생", "퇴근 후, 주말 등 가능한 시간에 맞춰 수업 시간과 주간 학습량을 현실적으로 조정합니다."],
+      ["재시생 점수 돌파", "지난 시험 성적과 오답 유형을 분석해 점수가 정체된 과목과 단원을 집중적으로 보완합니다."],
+    ],
+    topics: [["국어", "문법 · 독해 · 어휘 · 추론형 문항"], ["영어", "구문 · 독해 · 어휘 · 실용 영어"], ["한국사", "시대 흐름 · 사료 · 기출 회독"], ["직렬 상담", "일반행정 · 세무 · 교육행정 · 경찰 · 소방 등"], ["학습 관리", "주간 계획 · 과제 · 모의고사 점검"]],
+    faq: [
+      ["공무원 인강과 1:1 과외는 무엇이 다른가요?", "인터넷강의는 정해진 순서대로 혼자 듣는 방식이라 막히는 부분을 바로 해결하기 어렵습니다. 1:1 과외는 강사와 화상으로 마주 보며 바로 질문하고, 현재 실력에 맞춰 설명 방식과 진도를 조정합니다."],
+      ["공부를 처음 시작하는 노베이스도 수업이 가능한가요?", "가능합니다. 첫 상담에서 과목별 현재 수준을 확인한 뒤 기초 개념부터 기출 풀이까지 단계별 계획을 세워 진행합니다."],
+      ["공무원 과외 수업료는 어떻게 되나요?", "수업료는 과목, 주당 수업 횟수, 수업 시간에 따라 달라집니다. 무료 상담에서 목표와 일정을 확인한 뒤 정확하게 안내해 드립니다."],
+    ],
+  },
+  {
+    slug: "korean", name: "공무원 국어 과외", label: "공무원 국어",
+    title: "공무원 국어 과외 | 문법·독해 1:1 화상과외",
+    description: "공무원 국어 과외. 문법·어휘 암기보다 이해·추론 중심으로 바뀐 출제 기조에 맞춰 독해와 논리 문항을 1:1 실시간 화상수업으로 훈련합니다.",
+    hero: "문법 암기에서 독해·추론으로 무게가 옮겨 간 공무원 국어,<br>1:1 실시간 수업으로 풀이 과정을 함께 점검합니다.",
+    lead: "국어는 시간 관리가 점수를 좌우합니다. 지문 구조를 빠르게 파악하는 독해 훈련과 꼭 필요한 문법·어휘 정리를 병행하고, 문제를 푸는 과정을 강사가 직접 보며 사고 흐름을 교정합니다.",
+    points: [
+      ["독해 시간 단축", "지문 구조 파악, 선지 판단 기준을 훈련해 한 문항에 쓰는 시간을 줄입니다."],
+      ["추론·논리 문항 대비", "강화·약화, 전제 찾기 등 논리형 문항을 유형별로 정리하고 실전 문제로 연습합니다."],
+      ["문법·어휘 핵심 정리", "출제 빈도가 높은 문법 개념과 어휘를 정리해 암기 부담을 줄입니다."],
+    ],
+    topics: [["독해", "비문학 구조 독해 · 선지 판단"], ["논리·추론", "전제 · 강화/약화 · 논증 분석"], ["문법", "음운 · 형태 · 통사 · 어문 규정"], ["어휘", "한자어 · 고유어 · 관용 표현"], ["실전", "기출 분석 · 시간 배분 연습"]],
+    faq: [
+      ["공무원 국어는 어떻게 공부해야 하나요?", "최근 공무원 국어는 단순 암기보다 지문을 이해하고 추론하는 능력을 묻는 비중이 커졌습니다. 독해 훈련을 중심에 두고 문법·어휘는 출제 빈도가 높은 부분 위주로 정리하는 것이 효율적입니다."],
+      ["국어 시간이 늘 부족한데 과외로 해결할 수 있나요?", "1:1 수업에서는 문제를 푸는 과정을 강사가 직접 보면서 어디서 시간이 새는지 찾아 교정합니다. 지문 읽는 순서와 선지 판단 기준을 바꾸는 것만으로도 풀이 시간이 줄어드는 경우가 많습니다."],
+      ["국어만 단과로 수강할 수 있나요?", "가능합니다. 필요한 과목만 선택해 수강할 수 있으며, 상담에서 다른 과목과의 학습 시간 배분도 함께 안내합니다."],
+    ],
+  },
+  {
+    slug: "english", name: "공무원 영어 과외", label: "공무원 영어",
+    title: "공무원 영어 과외 | 과락 탈출 1:1 화상과외",
+    description: "공무원 영어 과외. 구문·독해·어휘부터 실용 영어 문항까지 노베이스도 1:1 실시간 화상수업으로 영어 과락을 벗어나세요. 무료 상담.",
+    hero: "영어 때문에 매번 발목 잡힌다면,<br>내 수준에서 필요한 것부터 다시 잡는 1:1 공무원 영어 과외.",
+    lead: "공무원 영어는 어휘와 구문 실력이 쌓이지 않으면 독해 점수가 오르지 않습니다. 현재 수준을 진단해 문장 해석 능력부터 실용 영어 독해, 생활영어까지 단계적으로 끌어올립니다.",
+    points: [
+      ["구문 해석 기초", "문장 구조를 읽는 법부터 다시 잡아 긴 지문도 정확하게 해석할 수 있게 합니다."],
+      ["실용 영어 독해", "안내문, 이메일 등 실무형 지문과 빈칸·순서·삽입 유형을 집중 훈련합니다."],
+      ["어휘 루틴 관리", "매일 외울 분량과 복습 주기를 정하고 수업 시간에 누적 점검합니다."],
+    ],
+    topics: [["구문", "문장 구조 · 해석 훈련"], ["독해", "주제 · 빈칸 · 순서 · 삽입"], ["실용 영어", "이메일 · 안내문 · 실무형 지문"], ["어휘", "필수 어휘 · 누적 테스트"], ["생활영어", "대화문 · 표현 정리"]],
+    faq: [
+      ["영어 노베이스인데 공무원 영어 과외를 들어도 될까요?", "오히려 노베이스일수록 1:1 수업이 효과적입니다. 인터넷강의 진도를 따라가기 어려운 기초 단계에서 필요한 문법과 구문만 골라 수준에 맞게 진행합니다."],
+      ["영어 과락을 벗어나려면 얼마나 걸리나요?", "현재 실력과 주당 학습 시간에 따라 다릅니다. 첫 상담과 진단에서 목표 점수까지 필요한 학습량을 확인하고 주차별 계획을 세워 드립니다."],
+      ["독해 문제를 풀 때 해석은 되는데 답이 틀려요.", "해석과 정답 판단은 다른 능력입니다. 수업에서는 정답의 근거를 지문에서 찾는 과정을 함께 연습해 선지를 고르는 기준을 잡아 드립니다."],
+    ],
+  },
+  {
+    slug: "korean-history", name: "공무원 한국사 과외", label: "공무원 한국사",
+    title: "공무원 한국사 과외 | 흐름·사료 1:1 화상과외",
+    description: "공무원 한국사 과외. 시대 흐름과 사료 분석, 기출 회독까지 1:1 실시간 화상수업으로 정리합니다. 한국사능력검정시험 대비도 상담 가능합니다.",
+    hero: "외워도 금방 잊히는 한국사,<br>시대 흐름으로 묶어 오래 남는 1:1 수업으로 정리합니다.",
+    lead: "한국사는 범위가 넓어 혼자 공부하면 회독 속도가 떨어지기 쉽습니다. 시대별 흐름을 먼저 세우고 사료와 기출을 연결해, 짧은 시간에 반복 회독할 수 있는 구조를 만듭니다.",
+    points: [
+      ["시대 흐름 정리", "왕별·사건별 암기 대신 시대의 흐름과 인과 관계로 큰 줄기를 세웁니다."],
+      ["사료 해석 훈련", "자주 나오는 사료의 핵심 키워드를 정리해 처음 보는 사료도 시대를 판단할 수 있게 합니다."],
+      ["기출 회독 관리", "회독 일정과 오답 정리를 함께 관리해 시험 직전까지 반복 학습을 이어갑니다."],
+    ],
+    topics: [["전근대사", "선사 · 고대 · 고려 · 조선"], ["근현대사", "개항기 · 일제강점기 · 현대사"], ["사료", "핵심 사료 · 키워드 정리"], ["기출", "회독 계획 · 오답 노트"], ["검정 대비", "한국사능력검정시험 상담"]],
+    faq: [
+      ["한국사는 암기량이 너무 많은데 과외가 도움이 되나요?", "한국사는 흐름을 먼저 잡으면 암기량이 크게 줄어듭니다. 1:1 수업에서 시대별 핵심 줄기를 세우고 헷갈리는 부분만 집중해서 정리합니다."],
+      ["한국사능력검정시험 대비도 가능한가요?", "가능합니다. 경찰 등 한국사 검정 성적을 요구하는 시험을 준비하는 경우 목표 급수에 맞춰 수업을 계획합니다."],
+      ["회독은 어떻게 관리하나요?", "시험일까지 남은 기간을 기준으로 회독 일정을 세우고, 매주 수업에서 진행 상황과 오답을 점검합니다."],
+    ],
+  },
+  {
+    slug: "police-fire-military", name: "경찰·소방·군무원 과외", label: "경찰·소방·군무원",
+    title: "경찰·소방·군무원 과외 | 직렬별 1:1 화상과외",
+    description: "경찰·소방·군무원 시험 과외. 직렬별 과목 구성에 맞춰 강사를 연결하고 실시간 1:1 화상수업으로 필기 합격까지 학습을 관리합니다.",
+    hero: "경찰·소방·군무원, 직렬마다 다른 시험 과목에 맞춰<br>필요한 과목만 골라 듣는 1:1 화상과외.",
+    lead: "경찰·소방·군무원 시험은 직렬과 채용 분야에 따라 과목 구성이 다릅니다. 상담에서 준비 중인 시험과 과목을 확인한 뒤 해당 과목에 맞는 강사를 연결하고, 체력·면접 일정까지 고려해 필기 학습 계획을 세웁니다.",
+    points: [
+      ["직렬별 과목 확인", "준비하는 시험의 과목 구성과 일정에 맞춰 수업할 과목과 우선순위를 정합니다."],
+      ["취약 과목 집중", "전 과목을 다 듣지 않고 점수가 부족한 과목만 골라 집중적으로 보완할 수 있습니다."],
+      ["일정 병행 관리", "체력 시험과 면접 준비 기간을 고려해 필기 학습량을 조정합니다."],
+    ],
+    topics: [["경찰 공무원", "순경 공채 · 경행경채 과목 상담"], ["소방 공무원", "공채 · 경채 과목 상담"], ["군무원", "행정 · 기술 직렬 과목 상담"], ["공통 과목", "국어 · 영어 · 한국사"], ["학습 관리", "필기·체력·면접 일정 고려"]],
+    faq: [
+      ["경찰 시험 과목도 과외가 가능한가요?", "준비하는 채용 분야와 과목을 상담에서 확인한 뒤, 해당 과목 수업이 가능한 강사를 연결해 드립니다."],
+      ["군무원 국어·행정학 같은 과목만 따로 들을 수 있나요?", "필요한 과목만 선택해 수강할 수 있습니다. 상담에서 직렬과 과목을 알려주시면 맞는 강사를 찾아 드립니다."],
+      ["체력 시험 준비와 병행해도 괜찮을까요?", "가능합니다. 체력 준비 시간을 고려해 주간 수업 횟수와 과제 분량을 현실적으로 조정합니다."],
+    ],
+  },
+  {
+    slug: "ncs-aptitude", name: "NCS·인적성 과외", label: "NCS·GSAT·인적성",
+    title: "NCS·GSAT·인적성 과외 | 공기업·대기업 1:1 화상과외",
+    description: "NCS·GSAT·SKCT·LG 인적성 과외와 공기업 전공수학·경제수학 수업. 취약 영역 중심 실시간 1:1 화상수업으로 필기 전형을 준비하세요.",
+    hero: "공기업 NCS부터 삼성 GSAT·SKCT·LG 인적성까지,<br>취약 영역을 집중 공략하는 1:1 화상과외.",
+    lead: "NCS와 인적성 시험은 정해진 시간 안에 많은 문항을 정확하게 푸는 능력이 핵심입니다. 영역별 진단으로 시간을 많이 쓰는 유형을 찾고, 풀이 전략과 실전 연습으로 점수를 끌어올립니다.",
+    points: [
+      ["영역별 진단", "의사소통·수리·문제해결·자료해석 등 영역별로 강점과 약점을 확인합니다."],
+      ["유형별 풀이 전략", "자주 나오는 유형별로 빠르게 푸는 방법과 넘길 문제를 고르는 기준을 정리합니다."],
+      ["공기업 전공 수리", "공기업 전공수학, 경제수학 등 필기 전공 과목 수업도 상담 후 진행합니다."],
+    ],
+    topics: [["공기업 NCS", "의사소통 · 수리 · 문제해결 · 자원관리"], ["삼성 GSAT", "수리 · 추리"], ["SKCT · LG 인적성", "언어 · 수리 · 추리 · 자료해석"], ["공기업 수리", "전공수학 · 경제수학"], ["실전", "시간 배분 · 모의고사 피드백"]],
+    faq: [
+      ["NCS는 혼자 문제집만 풀면 되지 않나요?", "문제집 풀이만으로는 시간이 부족한 원인을 찾기 어렵습니다. 1:1 수업에서는 풀이 과정을 직접 보며 시간이 새는 유형과 접근 방식을 교정합니다."],
+      ["GSAT 수리·추리만 집중해서 들을 수 있나요?", "가능합니다. 필요한 영역만 골라 집중적으로 수업하며 실전 모의고사로 점검합니다."],
+      ["공기업 전공수학, 경제수학도 수업하나요?", "네. 공기업 필기 전공 과목인 전공수학과 경제수학도 상담 후 맞는 강사를 연결해 드립니다."],
+    ],
+  },
+  {
+    slug: "economics-accounting", name: "재경관리사·TESAT·매경TEST 과외", label: "경제·회계 자격증",
+    title: "재경관리사·TESAT·매경TEST 과외 | 회계 1:1 화상과외",
+    description: "재경관리사·신용분석사·한경 TESAT·매경TEST 과외. 재무회계·원가회계 개념부터 기출까지 1:1 실시간 화상수업으로 단기 합격을 준비하세요.",
+    hero: "재경관리사·신용분석사·TESAT·매경TEST,<br>재무회계·원가회계를 개념부터 잡는 1:1 화상과외.",
+    lead: "경제·회계 자격시험은 계산 문제와 개념 문제가 함께 출제돼 혼자 공부하면 막히는 지점이 많습니다. 분개와 계산 과정을 강사와 함께 풀며 이해하고, 시험별 기출 유형으로 실전 감각을 키웁니다.",
+    points: [
+      ["회계 기초 개념", "회계원리와 분개부터 다시 잡아 재무회계·원가회계 계산 문제의 기본기를 만듭니다."],
+      ["시험별 맞춤 대비", "재경관리사, 신용분석사, TESAT, 매경TEST 등 시험별 출제 범위에 맞춰 수업합니다."],
+      ["계산 문제 훈련", "실수하기 쉬운 계산 과정을 직접 보며 교정하고 기출 문제로 반복 연습합니다."],
+    ],
+    topics: [["재경관리사", "재무회계 · 세무회계 · 원가관리회계"], ["신용분석사", "재무회계 · 원가회계 · 기업분석"], ["한경 TESAT", "경제이론 · 시사경제 · 상황판단"], ["매경TEST", "경제 · 경영 · 시사"], ["회계 과목", "재무회계 · 원가회계 단과"]],
+    faq: [
+      ["회계 전공이 아니어도 재경관리사를 준비할 수 있나요?", "가능합니다. 비전공자는 회계원리와 분개부터 시작해 재무회계·원가회계로 단계적으로 넘어가도록 수업을 설계합니다."],
+      ["TESAT과 매경TEST 중 어떤 시험을 준비해야 하나요?", "지원하려는 기업이나 활용 목적에 따라 다릅니다. 상담에서 목표를 확인하고 적합한 시험과 준비 기간을 함께 안내합니다."],
+      ["재무회계나 원가회계만 단과로 들을 수 있나요?", "가능합니다. 대학 수업, 자격증, 공기업 전공 시험 등 목적에 맞춰 필요한 과목만 수강할 수 있습니다."],
+    ],
+  },
+  {
+    slug: "job-english", name: "토익·오픽 취업영어 과외", label: "TOEIC·OPIc 취업영어",
+    title: "토익·토익스피킹·오픽 과외 | 취업영어 1:1 화상과외",
+    description: "TOEIC·TOEIC Speaking·OPIc·영어면접 과외. 목표 점수와 등급에 맞춰 실시간 1:1 화상수업으로 취업 영어를 단기간에 준비하세요.",
+    hero: "TOEIC 점수부터 토익스피킹·OPIc 등급, 영어면접까지<br>목표에 맞춰 준비하는 1:1 취업영어 화상과외.",
+    lead: "취업 영어는 지원 기업이 요구하는 점수와 등급이 분명한 만큼 목표에 맞춘 단기 전략이 중요합니다. 현재 점수를 진단하고 목표까지 필요한 영역에 집중해 준비 기간을 줄입니다.",
+    points: [
+      ["목표 점수 역산", "지원 일정과 목표 점수·등급을 기준으로 주차별 학습 계획을 세웁니다."],
+      ["말하기 실시간 피드백", "토익스피킹·OPIc 답변을 실시간으로 듣고 표현과 구성을 바로 교정합니다."],
+      ["영어면접 대비", "자기소개와 예상 질문 답변을 함께 만들고 실전처럼 연습합니다."],
+    ],
+    topics: [["TOEIC", "LC · RC 파트별 전략"], ["TOEIC Speaking", "유형별 답변 템플릿 · 발화 교정"], ["OPIc", "Background Survey 전략 · 돌발 질문"], ["영어면접", "자기소개 · 예상 질문 · 모의 면접"], ["단기 완성", "목표 점수별 주차 계획"]],
+    faq: [
+      ["토익스피킹과 OPIc 중 무엇을 준비해야 하나요?", "지원 기업이 인정하는 시험과 본인의 말하기 스타일에 따라 다릅니다. 상담에서 목표 기업과 일정을 확인하고 유리한 시험을 함께 정합니다."],
+      ["말하기 시험도 화상과외로 효과가 있나요?", "말하기는 실시간으로 답변을 듣고 바로 교정받는 것이 가장 효과적입니다. 화상 수업에서 실제 시험처럼 답변하고 즉시 피드백을 받습니다."],
+      ["짧은 기간 안에 목표 점수를 받을 수 있을까요?", "현재 점수와 목표 사이의 차이, 남은 기간에 따라 다릅니다. 진단 후 현실적인 목표와 주차별 계획을 안내해 드립니다."],
+    ],
+  },
+];
+
+const subjectPath = (slug) => `/subjects/${slug}/`;
+// 지역 페이지의 과목 목록 → 과목 랜딩 페이지 연결
+const subjectLinkFor = { "국어": "korean", "영어": "english", "한국사": "korean-history", "기업 인적성": "ncs-aptitude", "대기업 인적성": "ncs-aptitude", "공기업 수리": "ncs-aptitude", "경제·회계 시험": "economics-accounting", "회계 과목": "economics-accounting", "취업 영어": "job-english" };
+const popularAreas = [["/seoul/dongjak-gu/", "동작구(노량진)"], ["/seoul/gwanak-gu/", "관악구"], ["/seoul/gangnam-gu/", "강남구"], ["/seoul/nowon-gu/", "노원구"], ["/gyeonggi/suwon-si/", "수원시"], ["/gyeonggi/seongnam-si/", "성남시"], ["/busan/busanjin-gu/", "부산진구"], ["/daegu/suseong-gu/", "수성구"], ["/sejong/", "세종시"]];
+
+const escapeHtml = (text) => text.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
+const jsonLd = (data) => `  <script type="application/ld+json">\n${JSON.stringify(data, null, 2).replace(/</g, "\\u003c")}\n  </script>`;
+const faqSchema = (faq) => ({ "@type": "FAQPage", mainEntity: faq.map(([q, a]) => ({ "@type": "Question", name: q, acceptedAnswer: { "@type": "Answer", text: a } })) });
+const breadcrumbSchema = (items) => ({ "@type": "BreadcrumbList", itemListElement: items.map(([name, path], index) => ({ "@type": "ListItem", position: index + 1, name, item: `${site}${path}` })) });
+const provider = { "@type": "EducationalOrganization", name: "에듀패스", url: `${site}/`, telephone: "+82-10-2928-3614", logo: `${site}/assets/logo.svg` };
+
+function faqSection(heading, faq) {
+  return `    <section class="faq" id="faq">
+      <div class="section-heading">
+        <p class="eyebrow dark">FAQ</p>
+        <h2>${heading}</h2>
+      </div>
+      <div class="faq-list">
+${faq.map(([q, a], index) => `        <details${index === 0 ? " open" : ""}><summary>${q}</summary><p>${a}</p></details>`).join("\n")}
+      </div>
+    </section>`;
+}
+
+function headCommon({ title, description, path, keywords }) {
+  return `  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>${title}</title>
+  <meta name="description" content="${description}">
+  <meta name="keywords" content="${keywords}">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <link rel="canonical" href="${site}${path}">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="ko_KR">
+  <meta property="og:site_name" content="에듀패스">
+  <meta property="og:title" content="${title}">
+  <meta property="og:description" content="${description}">
+  <meta property="og:url" content="${site}${path}">
+  <meta property="og:image" content="${ogImage}">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="${title}">
+  <meta name="twitter:description" content="${description}">
+  <meta name="twitter:image" content="${ogImage}">
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" href="/assets/logo.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://images.unsplash.com">
+  <link href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@700&family=Pretendard:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/styles.css?v=20261021-1">
+  <link rel="stylesheet" href="/location.css?v=20261021-1">`;
+}
+
 const pathFor = (region, areaSlug) => areaSlug ? `/${region.slug}/${areaSlug}/` : `/${region.slug}/`;
 
 function directory(items, pathBuilder) {
@@ -120,36 +325,38 @@ function page(region, areaSlug, areaName, parent = null) {
   const breadcrumb = parent
     ? `<a href="/">홈</a><span>/</span>${region.name}<span>/</span><a href="${pathFor(region, parent.slug)}">${parent.name}</a><span>/</span>${areaName}`
     : `<a href="/">홈</a><span>/</span>${region.name}<span>/</span>${areaName}`;
+  // "중구"처럼 여러 시·도에 같은 이름이 있으므로 검색 제목에는 상위 지역명을 붙입니다.
+  const displayName = parent ? `${parent.name} ${areaName}` : areaSlug ? `${region.shortName} ${areaName}` : areaName;
+  const crumbs = [["홈", "/"], ...(parent ? [[parent.name, pathFor(region, parent.slug)]] : []), [areaName, path]];
+  const faq = [
+    [`${displayName}에서도 공무원 과외를 받을 수 있나요?`, `네. 모든 수업은 실시간 화상으로 진행되기 때문에 ${fullName} 어디에 계시든 이동 없이 집이나 익숙한 공간에서 1:1 수업을 받을 수 있습니다.`],
+    ["학원이나 인강 대신 화상과외를 선택하는 이유는 무엇인가요?", "통학 시간이 들지 않고, 정해진 진도를 따라가는 인강과 달리 강사에게 바로 질문하며 내 수준에 맞춰 배울 수 있기 때문입니다. 과제와 복습도 매주 점검합니다."],
+    ["어떤 과목을 수강할 수 있나요?", "9급·7급 공무원 국어·영어·한국사를 비롯해 경찰·소방·군무원, NCS·인적성, 재경관리사·TESAT 등 경제·회계 시험, TOEIC·OPIc 취업영어까지 상담 후 맞는 강사를 연결합니다."],
+  ];
   return `<!doctype html>
 <html lang="ko">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="${fullName} 공무원 시험 과외 소개. 9급·7급 국가직 및 지방직, 국어·영어·한국사를 실시간 비대면 1:1 수업으로 준비하세요.">
-  <title>${areaName} 공무원 시험 과외 소개</title>
-  <link rel="canonical" href="https://passtutor.kr${path}">
-  <meta property="og:type" content="website">
-  <meta property="og:locale" content="ko_KR">
-  <meta property="og:title" content="${areaName} 공무원 시험 과외 소개">
-  <meta property="og:description" content="${areaName} 수험생을 위한 실시간 비대면 공무원 공기업 자격증 1:1과외 안내입니다.">
-  <meta property="og:url" content="https://passtutor.kr${path}">
-  <link rel="icon" href="/assets/logo.svg" type="image/svg+xml">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@700&family=Pretendard:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/styles.css">
-  <link rel="stylesheet" href="/location.css?v=20261008-1">
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Service",
-    "name": "${areaName} 공무원 시험 1:1 과외",
-    "provider": { "@type": "Organization", "name": "에듀패스", "url": "https://passtutor.kr/" },
-    "areaServed": { "@type": "AdministrativeArea", "name": "${fullName}" },
-    "serviceType": "실시간 비대면 공무원 시험 1:1 과외",
-    "url": "https://passtutor.kr${path}"
-  }
-  </script>
+${headCommon({
+  title: `${displayName} 공무원 과외 | 1:1 화상과외 무료상담 - 에듀패스`,
+  description: `${fullName} 공무원 과외. 9급·7급 국어·영어·한국사부터 NCS·자격증까지 이동 없이 실시간 1:1 화상수업으로 준비하세요. 첫 상담 무료, ${phone}.`,
+  path,
+  keywords: `${areaName} 공무원 과외, ${displayName} 공무원 과외, ${areaName} 공무원 화상과외, ${areaName} 9급 공무원, ${areaName} 공무원 영어 과외, ${areaName} 공무원 국어 과외`,
+})}
+${jsonLd({
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Service",
+      name: `${displayName} 공무원 1:1 화상과외`,
+      provider,
+      areaServed: { "@type": "AdministrativeArea", name: fullName },
+      serviceType: "실시간 비대면 공무원 시험 1:1 과외",
+      url: `${site}${path}`,
+    },
+    breadcrumbSchema(crumbs),
+    faqSchema(faq),
+  ],
+})}
 </head>
 <body class="location-page">
   <header class="site-header location-header">
@@ -167,14 +374,14 @@ function page(region, areaSlug, areaName, parent = null) {
 
   <main>
     <section class="location-hero">
-      <img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=1800&q=85" alt="공무원 시험 학습 계획을 함께 점검하는 수험생들">
+      <img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=1800&q=85" alt="${areaName} 공무원 시험 학습 계획을 함께 점검하는 수험생들" fetchpriority="high">
       <div class="location-hero-shade"></div>
       <div class="location-hero-content">
         <p class="location-breadcrumb">${breadcrumb}</p>
         <p class="eyebrow">${region.shortName.toUpperCase()} · LIVE ONLINE LESSON</p>
-        <h1>${areaName} 공무원 시험<br>과외 소개</h1>
+        <h1>${areaName} 공무원 과외<br>1:1 실시간 화상수업</h1>
         <p>${areaName} 어디서나 이동 없이 강사와 마주 보고 배우는<br>실시간 비대면 공무원 공기업 자격증 1:1과외입니다.</p>
-        <a class="primary-button" href="tel:01029283614">수업 상담하기 <span aria-hidden="true">→</span></a>
+        <a class="primary-button" href="tel:01029283614">무료 상담 ${phone} <span aria-hidden="true">→</span></a>
       </div>
     </section>
 
@@ -198,15 +405,15 @@ function page(region, areaSlug, areaName, parent = null) {
         <p>공무원 과목뿐 아니라 기업 인적성, 공기업 수리, 경제·회계 자격시험과 취업 영어까지 목표에 맞는 전문 강사를 연결합니다.</p>
       </div>
       <ul>
-        <li><strong>국어</strong><span>문법 · 독해 · 어휘 · 기출 분석</span></li>
-        <li><strong>영어</strong><span>구문 · 독해 · 어휘 · 생활영어</span></li>
-        <li><strong>한국사</strong><span>시대사 · 사료 · 기출 문제</span></li>
-        <li><strong>기업 인적성</strong><span>삼성 GSAT · SKCT · NCS</span></li>
-        <li><strong>대기업 인적성</strong><span>LG 인적성 · 포스코 등 기업 인적성</span></li>
-        <li><strong>공기업 수리</strong><span>공기업 전공수학 · 경제수학</span></li>
-        <li><strong>경제·회계 시험</strong><span>매경TEST · 한경 TESAT · 재경관리사 · 신용분석사</span></li>
-        <li><strong>회계 과목</strong><span>재무회계 · 원가회계</span></li>
-        <li><strong>취업 영어</strong><span>TOEIC · TOEIC Speaking · OPIc · 취업 영어면접</span></li>
+        <li><a href="/subjects/${subjectLinkFor["국어"]}/"><strong>국어</strong><span>문법 · 독해 · 어휘 · 기출 분석</span></a></li>
+        <li><a href="/subjects/${subjectLinkFor["영어"]}/"><strong>영어</strong><span>구문 · 독해 · 어휘 · 생활영어</span></a></li>
+        <li><a href="/subjects/${subjectLinkFor["한국사"]}/"><strong>한국사</strong><span>시대사 · 사료 · 기출 문제</span></a></li>
+        <li><a href="/subjects/${subjectLinkFor["기업 인적성"]}/"><strong>기업 인적성</strong><span>삼성 GSAT · SKCT · NCS</span></a></li>
+        <li><a href="/subjects/${subjectLinkFor["대기업 인적성"]}/"><strong>대기업 인적성</strong><span>LG 인적성 · 포스코 등 기업 인적성</span></a></li>
+        <li><a href="/subjects/${subjectLinkFor["공기업 수리"]}/"><strong>공기업 수리</strong><span>공기업 전공수학 · 경제수학</span></a></li>
+        <li><a href="/subjects/${subjectLinkFor["경제·회계 시험"]}/"><strong>경제·회계 시험</strong><span>매경TEST · 한경 TESAT · 재경관리사 · 신용분석사</span></a></li>
+        <li><a href="/subjects/${subjectLinkFor["회계 과목"]}/"><strong>회계 과목</strong><span>재무회계 · 원가회계</span></a></li>
+        <li><a href="/subjects/${subjectLinkFor["취업 영어"]}/"><strong>취업 영어</strong><span>TOEIC · TOEIC Speaking · OPIc · 취업 영어면접</span></a></li>
       </ul>
     </section>
 
@@ -230,9 +437,13 @@ function page(region, areaSlug, areaName, parent = null) {
       <div class="district-links">
 ${directory(directoryItems, directoryPath)}
       </div>
+      <h3 class="keyword-title">과목·시험별 과외 안내</h3>
+${subjectChips()}
 ${parent ? `      <a class="all-area-link" href="${pathFor(region, parent.slug)}">${parent.name} 페이지로 돌아가기 <span aria-hidden="true">→</span></a>
 ` : ""}      <a class="all-area-link" href="/#areas">전국 지역 목록 보기 <span aria-hidden="true">→</span></a>
     </section>
+
+${faqSection(`${areaName} 공무원 과외<br>자주 묻는 질문`, faq)}
 
     <section class="final-cta location-cta">
       <div><p class="eyebrow">START YOUR PLAN</p><h2>${areaName}에서 시작하는<br>합격 학습 계획</h2></div>
@@ -243,6 +454,133 @@ ${parent ? `      <a class="all-area-link" href="${pathFor(region, parent.slug)}
   <footer class="site-footer location-footer">
     <div class="footer-brand"><img src="/assets/logo.svg" alt=""><div><strong>에듀패스</strong><span>공무원 공기업 자격증 1:1과외</span></div></div>
     <div><p>전화 상담 <a class="footer-phone" href="tel:01029283614">010-2928-3614</a> · 평일 10:00–20:00 · 토요일 10:00–16:00</p><p>모든 수업은 실시간 비대면 방식으로 진행됩니다.</p></div>
+    <p>© 2026 passtutor.kr. All rights reserved.</p>
+  </footer>
+</body>
+</html>
+`;
+}
+
+function subjectChips(exclude = "") {
+  return `      <ul class="keyword-links">
+${subjects.filter(({ slug }) => slug !== exclude).map(({ slug, name }) => `        <li><a href="${subjectPath(slug)}">${name}</a></li>`).join("\n")}
+      </ul>`;
+}
+
+function subjectPage(subject) {
+  const path = subjectPath(subject.slug);
+  const crumbs = [["홈", "/"], ["과목별 과외", "/#guides"], [subject.label, path]];
+  return `<!doctype html>
+<html lang="ko">
+<head>
+${headCommon({
+  title: `${subject.title} - 에듀패스`,
+  description: subject.description,
+  path,
+  keywords: `${subject.name}, ${subject.label} 과외, ${subject.label} 화상과외, ${subject.label} 1:1 과외, ${subject.topics.map(([name]) => `${name} 과외`).join(", ")}`,
+})}
+${jsonLd({
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Service",
+      name: `${subject.name} (실시간 1:1 화상수업)`,
+      description: subject.description,
+      provider,
+      areaServed: { "@type": "Country", name: "대한민국" },
+      serviceType: subject.name,
+      url: `${site}${path}`,
+    },
+    breadcrumbSchema(crumbs),
+    faqSchema(subject.faq),
+  ],
+})}
+</head>
+<body class="location-page">
+  <header class="site-header location-header">
+    <a class="brand" href="/" aria-label="에듀패스 홈">
+      <img class="brand-mark" src="/assets/logo.svg" alt="">
+      <span><strong>에듀패스</strong><small>공무원 공기업 자격증 1:1과외</small></span>
+    </a>
+    <nav aria-label="과목 페이지 메뉴">
+      <a href="#subjects">수업 내용</a>
+      <a href="#faq">자주 묻는 질문</a>
+      <a href="#related">다른 과목</a>
+    </nav>
+    <a class="header-cta" href="tel:01029283614">전화 상담</a>
+  </header>
+
+  <main>
+    <section class="location-hero">
+      <img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=1800&q=85" alt="${escapeHtml(subject.label)} 시험을 1:1로 준비하는 수험생" fetchpriority="high">
+      <div class="location-hero-shade"></div>
+      <div class="location-hero-content">
+        <p class="location-breadcrumb"><a href="/">홈</a><span>/</span><a href="/#guides">과목별 과외</a><span>/</span>${subject.label}</p>
+        <p class="eyebrow">LIVE ONLINE · 1:1 PRIVATE LESSON</p>
+        <h1>${subject.name}<br>1:1 실시간 화상수업</h1>
+        <p>${subject.hero}</p>
+        <a class="primary-button" href="tel:01029283614">무료 상담 ${phone} <span aria-hidden="true">→</span></a>
+      </div>
+    </section>
+
+    <section class="location-intro">
+      <div class="section-heading">
+        <p class="eyebrow dark">WHY 1:1</p>
+        <h2>${subject.label},<br>혼자 막히지 않게</h2>
+      </div>
+      <p class="section-lead">${subject.lead}</p>
+      <div class="location-feature-grid">
+${subject.points.map(([title, text], index) => `        <article><span>${String(index + 1).padStart(2, "0")}</span><h3>${title}</h3><p>${text}</p></article>`).join("\n")}
+      </div>
+    </section>
+
+    <section class="location-subjects" id="subjects">
+      <div>
+        <p class="eyebrow">CURRICULUM</p>
+        <h2>${subject.label}<br>수업 내용</h2>
+        <p>상담에서 현재 실력과 목표 시험, 남은 기간을 확인한 뒤 아래 범위 중 필요한 부분을 골라 수업 계획을 세웁니다.</p>
+      </div>
+      <ul>
+${subject.topics.map(([name, detail]) => `        <li><strong>${name}</strong><span>${detail}</span></li>`).join("\n")}
+      </ul>
+    </section>
+
+    <section class="location-process" id="process">
+      <div class="section-heading">
+        <p class="eyebrow dark">HOW IT WORKS</p>
+        <h2>${subject.label} 과외<br>진행 방식</h2>
+      </div>
+      <ol>
+        <li><span>01</span><div><h3>무료 상담</h3><p>목표 시험과 준비 기간, 고민 과목을 확인합니다.</p></div></li>
+        <li><span>02</span><div><h3>학습 진단·강사 매칭</h3><p>현재 수준과 가능한 수업 시간에 맞춰 강사를 연결합니다.</p></div></li>
+        <li><span>03</span><div><h3>실시간 1:1 수업</h3><p>화상으로 마주 보며 질문하고, 매주 과제와 복습을 점검합니다.</p></div></li>
+      </ol>
+    </section>
+
+${faqSection(`${subject.label} 과외<br>자주 묻는 질문`, subject.faq)}
+
+    <section class="district-directory" id="related">
+      <div class="section-heading">
+        <p class="eyebrow dark">MORE SUBJECTS</p>
+        <h2>함께 많이 찾는<br>과목·시험별 과외</h2>
+      </div>
+${subjectChips(subject.slug)}
+      <h3 class="keyword-title">지역별 ${subject.label} 화상과외</h3>
+      <ul class="keyword-links">
+${popularAreas.map(([href, name]) => `        <li><a href="${href}">${name} 공무원 과외</a></li>`).join("\n")}
+      </ul>
+      <a class="all-area-link" href="/#areas">전국 지역 목록 보기 <span aria-hidden="true">→</span></a>
+    </section>
+
+    <section class="final-cta location-cta">
+      <div><p class="eyebrow">START YOUR PLAN</p><h2>${subject.label},<br>첫 상담부터 함께할게요.</h2></div>
+      <a class="primary-button light" href="tel:01029283614">전화 상담하기 <span aria-hidden="true">→</span></a>
+    </section>
+  </main>
+
+  <footer class="site-footer location-footer">
+    <div class="footer-brand"><img src="/assets/logo.svg" alt=""><div><strong>에듀패스</strong><span>공무원 공기업 자격증 1:1과외</span></div></div>
+    <div><p>전화 상담 <a class="footer-phone" href="tel:01029283614">${phone}</a> · 평일 10:00–20:00 · 토요일 10:00–16:00</p><p>모든 수업은 실시간 비대면 방식으로 진행됩니다.</p></div>
     <p>© 2026 passtutor.kr. All rights reserved.</p>
   </footer>
 </body>
@@ -301,6 +639,13 @@ async function generate() {
     }
   }
 
+  await rm(join(root, "subjects"), { recursive: true, force: true });
+  for (const subject of subjects) {
+    const output = join(root, "subjects", subject.slug, "index.html");
+    await mkdir(dirname(output), { recursive: true });
+    await writeFile(output, subjectPage(subject), "utf8");
+  }
+
   const indexPath = join(root, "index.html");
   const index = await readFile(indexPath, "utf8");
   const replacement = homeDirectory();
@@ -321,13 +666,37 @@ async function generate() {
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
+${subjects.map(({ slug }) => `  <url><loc>${site}${subjectPath(slug)}</loc><lastmod>${updatedAt}</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>`).join("\n")}
 ${urls.map((url) => `  <url><loc>https://passtutor.kr${url}</loc><lastmod>${updatedAt}</lastmod><priority>0.8</priority></url>`).join("\n")}
 </urlset>
 `;
   await writeFile(join(root, "sitemap.xml"), sitemap, "utf8");
 
+  // 네이버 서치어드바이저 RSS 제출용 피드
+  const pubDate = new Date(`${updatedAt}T09:00:00+09:00`).toUTCString();
+  const rssItem = (title, path, description) => `    <item>
+      <title>${title}</title>
+      <link>${site}${path}</link>
+      <guid>${site}${path}</guid>
+      <description>${escapeHtml(description)}</description>
+      <pubDate>${pubDate}</pubDate>
+    </item>`;
+  const rss = `<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0">
+  <channel>
+    <title>에듀패스 | 공무원 공기업 자격증 1:1 화상과외</title>
+    <link>${site}/</link>
+    <description>9급·7급 공무원, NCS·인적성, 경제·회계 자격증, 취업영어 실시간 1:1 화상과외 안내</description>
+    <language>ko</language>
+    <lastBuildDate>${pubDate}</lastBuildDate>
+${subjects.map((subject) => rssItem(subject.title, subjectPath(subject.slug), subject.description)).join("\n")}
+  </channel>
+</rss>
+`;
+  await writeFile(join(root, "rss.xml"), rss, "utf8");
+
   const subAreaCount = Object.values(subAreas).reduce((total, areas) => total + areas.length, 0);
-  console.log(`Generated ${urls.length} location pages, including ${subAreaCount} general districts.`);
+  console.log(`Generated ${urls.length} location pages, including ${subAreaCount} general districts, and ${subjects.length} subject pages.`);
 }
 
 await generate();

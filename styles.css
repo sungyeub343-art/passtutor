@@ -161,9 +161,34 @@ blockquote footer span { color: var(--muted); font-size: 11px; }
 body.modal-open { overflow: hidden; }
 
 @keyframes heroZoom { from { transform: scale(1.06); opacity: .7; } to { transform: scale(1); opacity: 1; } }
+.hero-kicker { display: block; margin-bottom: 18px; color: var(--lime); font: 700 clamp(17px, 1.6vw, 22px)/1.4 Pretendard, "Noto Sans KR", sans-serif; }
+.guides { width: min(1180px, 90vw); margin: auto; padding: 130px 0; border-top: 1px solid var(--line); }
+.guide-grid { display: grid; grid-template-columns: repeat(4, 1fr); border-top: 1px solid var(--ink); border-left: 1px solid var(--line); }
+.guide-grid a { display: flex; flex-direction: column; gap: 10px; min-height: 180px; padding: 26px 22px; border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); background: rgba(255,255,255,.4); transition: background .2s; }
+.guide-grid a:hover, .guide-grid a:focus-visible { background: var(--white); }
+.guide-grid strong { font: 700 21px/1.35 "Gowun Batang", serif; }
+.guide-grid span { color: var(--muted); font-size: 13px; line-height: 1.6; }
+.guide-grid b { margin-top: auto; color: var(--green); font-size: 13px; }
+.faq { display: grid; grid-template-columns: .8fr 1.2fr; gap: 9vw; width: min(1180px, 90vw); margin: auto; padding: 130px 0; border-top: 1px solid var(--line); }
+.faq-list { border-top: 1px solid var(--ink); }
+.faq-list details { border-bottom: 1px solid var(--line); }
+.faq-list summary { display: flex; justify-content: space-between; gap: 20px; padding: 24px 6px; cursor: pointer; list-style: none; font-size: 18px; font-weight: 700; line-height: 1.5; }
+.faq-list summary::-webkit-details-marker { display: none; }
+.faq-list summary::after { content: "+"; color: var(--green); font-size: 22px; font-weight: 400; }
+.faq-list details[open] summary::after { content: "−"; }
+.faq-list p { margin: 0; padding: 0 6px 26px; color: var(--muted); font-size: 15px; line-height: 1.8; }
+.keyword-title { margin: 40px 0 16px; font-size: 15px; }
+.keyword-links { display: flex; flex-wrap: wrap; gap: 10px; margin: 0; padding: 0; list-style: none; }
+.keyword-links a { display: inline-block; padding: 10px 16px; border: 1px solid var(--line); background: var(--white); font-size: 14px; font-weight: 700; }
+.keyword-links a:hover, .keyword-links a:focus-visible { color: var(--white); background: var(--green); border-color: var(--green); }
+
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } .hero-image { animation: none; } * { transition: none !important; } }
 
 @media (max-width: 850px) {
+  .guides, .faq { padding: 85px 0; }
+  .guide-grid { grid-template-columns: repeat(2, 1fr); }
+  .faq { grid-template-columns: 1fr; gap: 40px; }
+  .faq-list summary { font-size: 16px; }
   .site-header { height: 68px; padding: 0 5vw; }
   .brand { min-width: 0; }
   .brand-mark { width: 34px; height: 34px; }
@@ -207,6 +232,8 @@ body.modal-open { overflow: hidden; }
 }
 
 @media (max-width: 500px) {
+  .guide-grid { grid-template-columns: 1fr; }
+  .guide-grid a { min-height: 0; }
   .brand small { display: none; }
   .hero-content { width: 88vw; }
   .hero-image { object-position: 62% center; }
